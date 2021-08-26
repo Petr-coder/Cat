@@ -8,6 +8,10 @@ public class Cat {
     private double maxWeight;
 
     private double eatenFoodAmount;
+    private boolean isAlive;
+
+    private static String stateOfDeath = "It's not getting to the land of the dead that's the problem. It's getting back.";
+    static int count = 0;
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
@@ -15,20 +19,37 @@ public class Cat {
         minWeight = 1000.0;
         maxWeight = 9000.0;
         eatenFoodAmount = 0;
+        count++;
+        isAlive = true;
     }
 
     public void meow() {
-        weight = weight - 1;
-        System.out.println("Meow");
+        if (isAlive) {
+            weight = weight - 1;
+            System.out.println("Meow");
+            checkIfCatIsAlive();
+        } else {
+            System.out.println(stateOfDeath);
+        }
     }
 
     public void feed(Double amount) {
-        weight = weight + amount;
-        eatenFoodAmount += amount;
+        if (isAlive) {
+            weight = weight + amount;
+            eatenFoodAmount += amount;
+            checkIfCatIsAlive();
+        } else {
+            System.out.println(stateOfDeath);
+        }
     }
 
     public void drink(Double amount) {
-        weight = weight + amount;
+        if (isAlive) {
+            weight = weight + amount;
+            checkIfCatIsAlive();
+        } else {
+            System.out.println(stateOfDeath);
+        }
     }
 
     public Double getWeight() {
@@ -52,7 +73,25 @@ public class Cat {
     }
 
     public void pee() {
-        weight = weight - 1;
-        System.out.println("Ps ps");
+        if (isAlive) {
+            weight = weight - 1;
+            System.out.println("Ps ps");
+            checkIfCatIsAlive();
+        } else {
+            System.out.println(stateOfDeath);
+        }
+    }
+
+    static int getCount() {
+        return count;
+    }
+
+    private void checkIfCatIsAlive() {
+        if (isAlive) {
+            if (weight < minWeight || weight > maxWeight) {
+                isAlive = false;
+                count--;
+            }
+        }
     }
 }
