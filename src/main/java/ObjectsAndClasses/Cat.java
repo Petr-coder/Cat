@@ -7,12 +7,23 @@ public class Cat {
     private double eatenFoodAmount;
     private boolean isAlive;
 
+    private Color color;
+
+
     private static String stateOfDeath = "It's not getting to the land of the dead that's the problem. It's getting back.";
     static int count = 0;
 
     static final int NUMBER_OF_EYES = 2;
     static final int MINIMUM_WEIGHT = 1_000;
     static final int MAXIMUM_WEIGHT = 9_000;
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
