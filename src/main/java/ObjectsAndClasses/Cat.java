@@ -4,20 +4,19 @@ public class Cat {
     private double originWeight;
     private double weight;
 
-    private double minWeight;
-    private double maxWeight;
-
     private double eatenFoodAmount;
     private boolean isAlive;
 
     private static String stateOfDeath = "It's not getting to the land of the dead that's the problem. It's getting back.";
     static int count = 0;
 
+    static final int NUMBER_OF_EYES = 2;
+    static final int MINIMUM_WEIGHT = 1_000;
+    static final int MAXIMUM_WEIGHT = 9_000;
+
     public Cat() {
         weight = 1500.0 + 3000.0 * Math.random();
         originWeight = weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
         eatenFoodAmount = 0;
         count++;
         isAlive = true;
@@ -57,9 +56,9 @@ public class Cat {
     }
 
     public String getStatus() {
-        if (weight < minWeight) {
+        if (weight < MINIMUM_WEIGHT) {
             return "Dead";
-        } else if (weight > maxWeight) {
+        } else if (weight > MAXIMUM_WEIGHT) {
             return "Exploded";
         } else if (weight > originWeight) {
             return "Sleeping";
@@ -88,7 +87,7 @@ public class Cat {
 
     private void checkIfCatIsAlive() {
         if (isAlive) {
-            if (weight < minWeight || weight > maxWeight) {
+            if (weight < MINIMUM_WEIGHT || weight > MAXIMUM_WEIGHT) {
                 isAlive = false;
                 count--;
             }
