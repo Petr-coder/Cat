@@ -48,6 +48,19 @@ public class Car {
         isSpecial = special;
     }
 
+
+    public Car(String number, int height, double weight, boolean hasVehicle, boolean isSpecial) {
+        this.number = number;
+        this.height = height;
+        this.weight = weight;
+        this.hasVehicle = hasVehicle;
+        this.isSpecial = isSpecial;
+    }
+
+    public Car(Car car) {
+        this(car.number, car.height, car.weight, car.hasVehicle, car.isSpecial);
+    }
+
     public String toString() {
         String special = isSpecial ? "СПЕЦТРАНСПОРТ " : "";
         return "\n=========================================\n" +
