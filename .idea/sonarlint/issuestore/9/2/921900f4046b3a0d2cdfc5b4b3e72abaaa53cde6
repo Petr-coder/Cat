@@ -3,9 +3,9 @@ T
 java:S1854"8Remove this useless assignment to local variable "cat3".(ÃĞéz8–İ•¸/
 Z
 java:S1854"8Remove this useless assignment to local variable "cat2".(¼Ë†Çûÿÿÿÿ8–İ•¸/
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ˆŠ ¸
 K
 java:S1481")Remove this unused "cat2" local variable.(¼Ë†Çûÿÿÿÿ8İ½İ•¸/
 E
 java:S1481")Remove this unused "cat3" local variable.(ÃĞéz8£Úİ•¸/
-N	java:S106"9Replace this use of System.out or System.err by a logger.(ˆŠ ¸
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´‡âğ8ıÚ™¸/

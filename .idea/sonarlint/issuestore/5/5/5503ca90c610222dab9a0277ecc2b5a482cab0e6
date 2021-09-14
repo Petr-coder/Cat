@@ -1,12 +1,12 @@
 
-U	java:S1062"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
-U	java:S106c"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
-U	java:S106`"9Replace this use of System.out or System.err by a logger.(–î›Ì8½Ã³•¸/
-U	java:S106<"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
 Z	java:S106/"9Replace this use of System.out or System.err by a logger.(Û‚Ó³ýÿÿÿÿ8½Ã³•¸/
+U	java:S1062"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
+U	java:S106<"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
+U	java:S106E"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
+U	java:S106`"9Replace this use of System.out or System.err by a logger.(–î›Ì8½Ã³•¸/
+U	java:S106c"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
+S
+java:S2696o"6Make the enclosing method "static" or remove this set.( §Ž8„ï€•¸/
 Q
 java:S1066m"/Merge this if statement with the enclosing one.(‰é”»ýÿÿÿÿ8½Ã³•¸/
 v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´‡âð8Ëê™¸/
-U	java:S106E"9Replace this use of System.out or System.err by a logger.(ž€†¶8½Ã³•¸/
-S
-java:S2696o"6Make the enclosing method "static" or remove this set.( §Ž8„ï€•¸/

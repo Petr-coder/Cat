@@ -1,12 +1,12 @@
 
 t
 java:S1104"RMake number a static final constant or non-public and provide accessors if needed.(ŞÄù×ùÿÿÿÿ8®¼Æ–¸/
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´‡âğ
-x
-java:S1104"VMake hasVehicle a static final constant or non-public and provide accessors if needed.(×äèÿÿÿÿÿ8®¼Æ–¸/
-r
-java:S1104	"UMake isSpecial a static final constant or non-public and provide accessors if needed.(Èò‘Û8®¼Æ–¸/
 o
 java:S1104"RMake height a static final constant or non-public and provide accessors if needed.(ñ½8®¼Æ–¸/
 n
 java:S1104"RMake weight a static final constant or non-public and provide accessors if needed.(œŠ¾x8®¼Æ–¸/
+x
+java:S1104"VMake hasVehicle a static final constant or non-public and provide accessors if needed.(×äèÿÿÿÿÿ8®¼Æ–¸/
+r
+java:S1104	"UMake isSpecial a static final constant or non-public and provide accessors if needed.(Èò‘Û8®¼Æ–¸/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´‡âğ
