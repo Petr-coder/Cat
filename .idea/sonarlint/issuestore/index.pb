@@ -17,3 +17,9 @@ X
 (src/main/java/ObjectsAndClasses/Cat.java,5/5/5503ca90c610222dab9a0277ecc2b5a482cab0e6
 X
 (src/main/java/ObjectsAndClasses/Car.java,6/2/6294f75136aca39a013a76010f2b4eb6ef348955
+[
++src/main/java/StringExperiments/Loader.java,3/6/365ed8e7c35928958ebef95e7671050fd85fe4f7
+Z
+*src/main/java/StringExperiments/task1.java,1/c/1c4830a0a3c891e86c030cc250ff8eafa4e88ae8
+Z
+*src/main/java/StringExperiments/task4.java,1/a/1a54a8d3b9b5830093a8da60007b5aba09c7ec7b
