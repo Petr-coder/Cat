@@ -11,9 +11,10 @@ import java.util.Scanner;
  */
 public class task_regex {
     public static void main(String[] args) {
-        String input = "8-999-364";
-        boolean result = input.matches("^((\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$");
-        System.out.println(result);
+        String input = input();
+
+        input = inputValidation(input);
+
     }
 
     static String input() {
@@ -21,12 +22,22 @@ public class task_regex {
         return console.nextLine();
     }
 
-    static void inputValidation(String string) {
-        String regex = "^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$";
+    static String inputValidation(String string) {
+        String myRegex = "(8|\\+7)?([\\- ]?)(9)([0-9]{2})([\\- ]?)([0-9]{3})([\\- ]?)([0-9]{2})([\\- ]?)([0-9]{2})([\\- ]?)";
+        string = string.replaceAll("[\\+\\-]", "");
 
-        if (string.matches(regex)) {
+        if (string.length() > 11 || string.length() < 10) {
+            System.out.println("Неверный формат номера");
+        } else if (string.matches(myRegex)) {
 
+
+            if (string.length() != 11) {
+                string = 7 + string;
+            } else if (string.indexOf("8") == 0) {
+                string = 7 + string.substring(1);
+            }
+            System.out.println(string);
         }
-
+        return string;
     }
 }
