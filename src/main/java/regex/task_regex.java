@@ -14,7 +14,6 @@ public class task_regex {
         String input = input();
 
         input = inputValidation(input);
-
     }
 
     static String input() {
@@ -23,13 +22,10 @@ public class task_regex {
     }
 
     static String inputValidation(String string) {
-        String myRegex = "(8|\\+7)?([\\- ]?)(9)([0-9]{2})([\\- ]?)([0-9]{3})([\\- ]?)([0-9]{2})([\\- ]?)([0-9]{2})([\\- ]?)";
-        string = string.replaceAll("[\\+\\-]", "");
+        String myRegex = "(8|\\+7|7)?([\\-]|[(]|([ ]?[(]))?(9)([0-9]{2})([\\-]|[ ]|([)][ ]?))?([0-9]{3})([\\-]|[ ])?([0-9]{2})([\\-]|[ ])?([0-9]{2})";
+        string = string.replaceAll("[^\\d]", "");
 
-        if (string.length() > 11 || string.length() < 10) {
-            System.out.println("Неверный формат номера");
-        } else if (string.matches(myRegex)) {
-
+        if (string.matches(myRegex)) {
 
             if (string.length() != 11) {
                 string = 7 + string;
@@ -37,7 +33,10 @@ public class task_regex {
                 string = 7 + string.substring(1);
             }
             System.out.println(string);
-        }
+
+        } else
+            System.out.println("Неверный формат номера");
+
         return string;
     }
 }
