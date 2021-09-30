@@ -1,19 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(´‡âğ
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(ŞÒ—üÿÿÿÿ8Æ×”•¸/
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(—ñÇÙÿÿÿÿÿ8Æ×”•¸/
-U	java:S106$"9Replace this use of System.out or System.err by a logger.(É¬ ş8Æ×”•¸/
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(‡ö›Íûÿÿÿÿ8Æ×”•¸/
-K
-java:S1481")Remove this unused "cat3" local variable.(†À£©ıÿÿÿÿ8Æ×”•¸/
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(Íÿ°«øÿÿÿÿ8Æ×”•¸/
-Z	java:S106"9Replace this use of System.out or System.err by a logger.(­í¾¶úÿÿÿÿ8Æ×”•¸/
-U	java:S106"9Replace this use of System.out or System.err by a logger.(üõ´ß8Æ×”•¸/
-Z
-java:S1854"8Remove this useless assignment to local variable "cat4".(…®Ùüÿÿÿÿ8Æ×”•¸/
-Z
-java:S1854"8Remove this useless assignment to local variable "cat3".(†À£©ıÿÿÿÿ8Æ×”•¸/
-Z	java:S106
-"9Replace this use of System.out or System.err by a logger.(óğÖÓüÿÿÿÿ8Æ×”•¸/
-K
-java:S1481")Remove this unused "cat4" local variable.(…®Ùüÿÿÿÿ8Æ×”•¸/
