@@ -1,5 +1,6 @@
 package HM_5_5;
 
+import java.util.Set;
 import java.util.StringJoiner;
 
 public class Utils {
@@ -46,5 +47,16 @@ public class Utils {
                 .add(plate[0])
                 .add(plate[4])
                 .add(plate[5]).toString();
+    }
+
+    static String getClassOfSet(Set<String> set) {
+        String className = set.getClass().toString();
+
+        if (className.contains("TreeSet")) {
+            className = "TreeSet";
+        } else if (className.contains("HashSet")) {
+            className = "HashSet";
+        }
+        return className;
     }
 }

@@ -26,34 +26,36 @@ XNNNYZR — пример, A111BC197, Y777HC66,
 package HM_5_5;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
+import static HM_5_5.GenerateCollectionOfLicensePlate.generateHashSetOfPlates;
 import static HM_5_5.Searches.*;
-import static HM_5_5.generateCollectionOfLicensePlate.generateHashSetOfPlates;
 
-public class task1 {
+
+public class Task1 {
 
     static final int NUMBER_OF_PLATES = 2_500_000;
 
     public static void main(String[] args) {
-
         HashSet<String> hashSet = generateHashSetOfPlates(NUMBER_OF_PLATES);
         ArrayList<String> arrayList = new ArrayList<>(hashSet);
-
         Collections.sort(arrayList);
-        Set<String> treeSet = new TreeSet<>();
-        hashSet.stream()
-                .map(String::valueOf)
-                .collect(Collectors.toCollection(TreeSet::new));
+        int a = Collections.binarySearch(arrayList, "X203OP199");
+        System.out.println(a);
+        Set<String> treeSet = new TreeSet<>(hashSet);
+        //stream фигня оказался. Убрал его
 
         linearSearchArrayList(arrayList, "X203OP199");
-        binarySearch(arrayList, "X203OP199");
-        searchHashSet(hashSet, "X203OP199");
-        searchHashSet(treeSet, "X203OP199");
-
+        binaryHandMadeSearch(arrayList, "X203OP199");
+        binaryCollectionsSearch(arrayList, "X203OP199");
+        linearSearchInSet(hashSet, "X203OP199");
+        linearSearchInSet(treeSet, "X203OP199");
+        searchSetContains(hashSet, "X203OP199");
+        searchSetContains(treeSet, "X203OP199");
     }
 //3. Напишите в форме ответа, какой поиск — самый быстрый, а какой — самый медленный.
-  //Ответ:
-  //  Быстрее всего в рамках этой задачи - линейный (перебором) поиск
-  // Но наверняка есть подводные камни. Поэтому это заслуживает отдельного изучения
+    //Ответ:
+    //  Быстрее всего в рамках этой задачи - линейный (перебором) поиск
+    // Но наверняка есть подводные камни. Поэтому это заслуживает отдельного изучения
+    //update
+    // бинарный из Collections и Set.contains самые быстрые
 }

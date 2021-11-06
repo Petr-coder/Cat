@@ -1,13 +1,12 @@
 package HM_5_5;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static HM_5_5.Utils.getClassOfSet;
 
 public class Searches {
 
-    public static int linearSearchArrayList(ArrayList<String> arrayList, String elementToSearch) {
+    public static void linearSearchArrayList(ArrayList<String> arrayList, String elementToSearch) {
         long start = System.nanoTime();
         String result = "не найден";
 
@@ -20,10 +19,9 @@ public class Searches {
 
         long finish = System.nanoTime();
         System.out.println("Поиск перебором: номер " + result + ", поиск занял " + (finish - start) + " нс");
-        return -1;
     }
 
-    public static int binarySearch(List<String> list, String searchValue) {
+    public static void binaryHandMadeSearch(List<String> list, String searchValue) {
         long start = System.nanoTime();
         String result = "найден";
 
@@ -47,34 +45,44 @@ public class Searches {
 
         }
         long finish = System.nanoTime();
-        System.out.println("Поиск бинарный: номер " + result + ", поиск занял " + (finish - start) + " нс");
-
-        return mid;
-
+        System.out.println("Поиск бинарный (мой): номер " + result + ", поиск занял " + (finish - start) + " нс");
     }
 
+    public static void binaryCollectionsSearch(List<String> list, String searchValue) {
+        long start = System.nanoTime();
+        String result = "найден";
 
-    public static int searchHashSet(Set<String> set, String elementToSearch) {
+        if(Collections.binarySearch(list, searchValue)==-1){
+            result = "не найден";
+        }
+
+        long finish = System.nanoTime();
+        System.out.println("Поиск бинарный из Collections: номер " + result + ", поиск занял " + (finish - start) + " нс");
+    }
+
+    public static void linearSearchInSet(Set<String> set, String elementToSearch) {
         long start = System.nanoTime();
         String result = "не найден";
-        String className = set.getClass().toString();
-        if (className.contains("TreeSet")) {
-            className = "TreeSet";
-        } else if(className.contains("HashSet")) {
-            className = "HashSet";
-        }
 
         for (Iterator<String> iterator = set.iterator(); iterator.hasNext(); ) {
             String stringArray = iterator.next();
             if (stringArray.equals(elementToSearch))
                 result = "найден";
-
         }
 
         long finish = System.nanoTime();
-        System.out.println("Поиск в " + className + ": номер " + result + ", поиск занял " + (finish - start) + " нс");
-
-        return -1;
+        System.out.println("Поиск в " + getClassOfSet(set) + ": номер " + result + ", поиск занял " + (finish - start) + " нс");
     }
 
+    static void searchSetContains(Set<String> set, String elementToSearch) {
+        long start = System.nanoTime();
+        String result = "не найден";
+
+        if (set.contains(elementToSearch)) {
+            result = "найден";
+        }
+
+        long finish = System.nanoTime();
+        System.out.println("Поиск в " + getClassOfSet(set) + ".contains: номер " + result + ", поиск занял " + (finish - start) + " нс");
+    }
 }

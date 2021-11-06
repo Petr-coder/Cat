@@ -19,22 +19,13 @@ public class VerificationOfLicensePlate {
             "HEX", "BOP", "PEB", "POK", "KOT", "TOK", "POM", "MOP", ""};
 
     static boolean verificationOfCoolness(String[] plate) {
-        boolean result = false;
+        return checkIfDigitsMatch(plate) || checkLettersMatch(plate) || checkCoolWords(plate);
+    }
 
-        if (checkFirstAndThirdDigitsMatch(plate)) {
-            result = true;
-        } else if (checkFirstAndSecondDigitsMatch(plate)) {
-            result = true;
-        } else if (checkSecondAndThirdDigitsMatch(plate)) {
-            result = true;
-        } else if (checkLettersMatch(plate)) {
-            result = true;
-        } else if (checkFirstAndThirdLettersMatch(plate)) {
-            result = true;
-        } else if (checkCoolWords(plate)) {
-            result = true;
-        }
-        return result;
+
+    static boolean checkIfDigitsMatch(String[] plate) {
+        return checkFirstAndThirdDigitsMatch(plate) | checkFirstAndThirdDigitsMatch(plate) |
+                checkSecondAndThirdDigitsMatch(plate);
     }
 
     static boolean checkFirstAndThirdDigitsMatch(String[] plate) {
@@ -50,6 +41,10 @@ public class VerificationOfLicensePlate {
     }
 
     static boolean checkLettersMatch(String[] plate) {
+        return checkAllLettersMatch(plate) || checkFirstAndThirdLettersMatch(plate);
+    }
+
+    static boolean checkAllLettersMatch(String[] plate) {
         return plate[0].equals(plate[4]) && plate[0].equals(plate[5]);
     }
 
@@ -70,7 +65,7 @@ public class VerificationOfLicensePlate {
         return result;
     }
 
-    static boolean checkIfResultIsLicensePlate(String[] plate) {
+    static boolean checkResultIsLicensePlate(String[] plate) {
         String result = String.join("", plate);
         return result.matches(LICENSE_FORMATE);
     }
