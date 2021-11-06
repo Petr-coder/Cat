@@ -21,11 +21,9 @@ public class GenerateCollectionOfLicensePlate {
 
             while (true) {
                 String[] plate = generateRussianLicensePlate();
-                if (checkResultIsLicensePlate(plate)) {
-                    if (verificationOfCoolness(plate)) {
-                        list.add(plate);
-                        break;
-                    }
+                if (checkResultIsLicensePlate(plate) && verificationOfCoolness(plate)) {
+                    list.add(plate);
+                    break;
                 }
             }
         }
@@ -59,11 +57,9 @@ public class GenerateCollectionOfLicensePlate {
 
             while (true) {
                 plate = generateRussianLicensePlate();
-                if (checkResultIsLicensePlate(plate)) {
-                    if (verificationOfCoolness(plate)) {
-                        set.add(plate);
-                        break;
-                    }
+                if (checkResultIsLicensePlate(plate) && verificationOfCoolness(plate)) {
+                    set.add(plate);
+                    break;
                 }
             }
         }
