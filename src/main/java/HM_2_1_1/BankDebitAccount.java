@@ -1,26 +1,38 @@
 package HM_2_1_1;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /*
 2. Создайте два класса наследника, расширяющие работу с остатком на счёте:
 Депозитный расчётный счёт, с которого нельзя снимать деньги в течение месяца после последнего внесения.
  */
 public class BankDebitAccount extends BankAccount {
+    static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-    public static void main(String[] args) {
-        double accountBalance;
-        int Date;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDate startDate = LocalDate.parse("28.01.2009", formatter);
-        LocalDate endDate = LocalDate.parse("05.03.2013", formatter);
-        Period period = Period.between(startDate, endDate);
-        System.out.println(period.getYears());      // 4
-        System.out.println(period.getMonths());     // 1
-        System.out.println(period.getDays());       // 5
+    private Date dateOfLastDeposit;
 
+    @Override
+    void depositSum(double sum) {
+        accountBalance += sum;
+        dateOfLastDeposit = new Date();
     }
 
+    @Override
+    void withdrawMoney(double sum) {
+        Date currentDate = new Date();
+        long milliseconds = currentDate.getTime() - dateOfLastDeposit.getTime();
+        int days = (int) (milliseconds / (24 * 60 * 60 * 1000));
+
+        if (this.accountBalance - sum >= 0) {
+            if (days > 30) {
+            } else if (days <= 30) {
+                System.out.println("No money can be withdrawn from the current account within a month after the last " +
+                        "deposit");
+            }
+        } else {
+            System.out.println("Insufficient funds in the account.");
+        }
+    }
 }
