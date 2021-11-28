@@ -22,28 +22,45 @@ abstract class BankAccount {
 
     double accountBalance;
 
-    void withdrawMoney(double sum) {
-        if (this.accountBalance - sum < 0) {
-            System.out.println("Insufficient funds in the account.");
-        } else
-            this.accountBalance -= sum;
+    public BankAccount() {
     }
 
-    void depositSum(double sum) {
+    public BankAccount(double accountBalance) {
+        this.accountBalance = accountBalance;
+    }
+
+    boolean withdrawMoney(double sum) {
+        if (isWithdrawPossible(sum)) {
+            System.out.println("Insufficient funds in the account.");
+            return false;
+        } else {
+            this.accountBalance -= sum;
+            return true;
+        }
+    }
+
+    void depositSum(double sum) throws InterruptedException {
         this.accountBalance += sum;
-        System.out.println("This is superClassMethod");
     }
 
     double getAccountBalance() {
         return this.accountBalance;
     }
 
-    boolean send(BankAccount receiver, double amount) {
-        double accountSum = receiver.getAccountBalance();
-        withdrawMoney(amount);
-        receiver.depositSum(amount);
-        accountBalance = accountBalance - amount;
+    boolean send(BankAccount receiver, double amount) throws InterruptedException {
+        double senderAccountSum = getAccountBalance();
+        double receiverAccountSum = receiver.getAccountBalance();
 
-        return accountSum + amount == receiver.getAccountBalance();
+        withdrawMoney(amount);
+        if (isWithdrawPossible(amount)) {
+            receiver.depositSum(amount);
+        }
+
+        return (receiverAccountSum + amount == receiver.getAccountBalance()) && (getAccountBalance() + amount) == senderAccountSum;
     }
+
+    boolean isWithdrawPossible(double amount) {
+        return this.accountBalance - amount < 0;
+    }
+
 }
