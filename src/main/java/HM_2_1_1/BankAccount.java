@@ -18,7 +18,7 @@ boolean send(BankAccount receiver, double amount)
 Примечание
 В методе для аргумента amount используйте тип данных, который применили в классе BankAccount. Тип double дан для примера.
  */
-abstract class BankAccount {
+public abstract class BankAccount {
 
     double accountBalance;
 
