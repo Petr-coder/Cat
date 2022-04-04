@@ -36,6 +36,8 @@ public class Task {
         animalList.add(new Dog("Песель4"));
 
 
+        runAndSwim(animalList,200);
+
         System.out.println("Animal.count = " + Animal.count);
         System.out.println("DomesticCat.domesticCatCount = " + DomesticCat.domesticCatCount);
         System.out.println("Moose.mooseCount = " + Moose.mooseCount);
@@ -44,16 +46,12 @@ public class Task {
         System.out.println("Dog.count " + "= " + Dog.dogCount);
 
 
-        System.out.println(animalList.get(0).maximumDistanceRun + "" + animalList.get(0).getClass());
-        System.out.println(animalList.get(0).maximumDistanceSwim + "" + animalList.get(0).getClass());
+    }
 
-        System.out.println(animalList.get(1).maximumDistanceRun + "" + animalList.get(1).getClass());
-        System.out.println(animalList.get(1).maximumDistanceSwim + "" + animalList.get(1).getClass());
-
-        System.out.println(animalList.get(2).maximumDistanceRun + "" + animalList.get(2).getClass());
-        System.out.println(animalList.get(2).maximumDistanceSwim + "" + animalList.get(2).getClass());
-
-        System.out.println(animalList.get(3).maximumDistanceRun + "" + animalList.get(3).getClass());
-        System.out.println(animalList.get(3).maximumDistanceSwim + "" + animalList.get(3).getClass());
+    static void runAndSwim(List<Animal> animals, double distance) {
+        for (Animal animal : animals) {
+            animal.run(distance);
+            animal.swim(distance);
+        }
     }
 }
