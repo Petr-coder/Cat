@@ -1,5 +1,7 @@
 package HM_3_1_4_abstract_class;
 
+import java.util.Collections;
+
 /*
 Цель задания
 Научиться работать с абстрактным классом и взаимодействием классов.
@@ -51,4 +53,32 @@ Company с помощью конструктора или сеттера.
 в компании, или отрицательные.
  */
 public class Task {
+
+
+    public static void main(String[] args) {
+
+        Company company = new Company("Microsoft");
+
+        for (int i = 0; i < 170; i++) {
+            company.hire(new Operator());
+        }
+
+        for (int i = 0; i < 80; i++) {
+            company.hire(new Manager());
+        }
+
+        for (int i = 0; i < 10; i++) {
+            company.hire(new TopManager());
+        }
+
+        company.printTopSalary(company.getTopSalaryStaff(15));
+        company.printBottomSalary(company.getLowestSalaryStaff(30));
+
+        Collections.shuffle(company.getEmployeeList());
+
+        company.fire(company.getEmployeeList().size()/2);
+
+        company.printTopSalary(company.getTopSalaryStaff(15));
+        company.printBottomSalary(company.getLowestSalaryStaff(30));
+    }
 }
