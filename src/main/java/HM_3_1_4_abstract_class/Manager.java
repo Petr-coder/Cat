@@ -8,16 +8,12 @@ public class Manager extends Employee {
     private int incomeForCompany = (int) ((Math.random() * ((MAX_INCOME - MIN_INCOME) + 1)) + MIN_INCOME);
 
     Manager() {
-        super.salary = (int) (fixedSalary + (incomeForCompany * 0.05));
-        super.company = null;
+        setSalary((int) (fixedSalary + (incomeForCompany * 0.05)));
+        setCompany(null);
     }
-    
+
     int getIncomeForCompany() {
         return incomeForCompany;
     }
 
-    @Override
-    int getMonthSalary() {
-        return super.salary;
-    }
 }

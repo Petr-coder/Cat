@@ -2,8 +2,12 @@ package HM_3_1_4_abstract_class;
 
 abstract class Employee implements Comparable {
 
-    int salary;
-    Company company;
+    private int salary;
+    private Company company;
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
 
     public Company getCompany() {
         return company;
@@ -13,7 +17,9 @@ abstract class Employee implements Comparable {
         this.company = company;
     }
 
-    abstract int getMonthSalary();
+    int getMonthSalary() {
+        return salary;
+    }
 
     abstract int getIncomeForCompany();
 
