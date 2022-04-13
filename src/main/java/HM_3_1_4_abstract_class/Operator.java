@@ -5,14 +5,8 @@ public class Operator extends Employee {
     private static int fixedSalary = 50_000;
 
     Operator() {
-        super.salary = fixedSalary;
-        super.company = null;
-    }
-
-
-    @Override
-    int getMonthSalary() {
-        return super.salary;
+        setSalary(fixedSalary);
+        setCompany(null);
     }
 
     @Override

@@ -111,7 +111,7 @@ class Company {
     }
 
     void printBottomSalary(List<Employee> employees) {
-        System.out.println("Список из " + employees.size() + "самых низких зарплат по возрастанию:");
+        System.out.println("Список из " + employees.size() + " самых низких зарплат по возрастанию:");
         for (Employee unit : employees) {
             System.out.println(" - " + String.format(Locale.CANADA_FRENCH, "%,d", unit.getMonthSalary()) + " руб.");
         }
