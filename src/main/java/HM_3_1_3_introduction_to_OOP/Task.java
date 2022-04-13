@@ -36,14 +36,14 @@ public class Task {
         animalList.add(new Dog("Песель4"));
 
 
-        runAndSwim(animalList,200);
+        runAndSwim(animalList, 200);
 
-        System.out.println("Animal.count = " + Animal.count);
-        System.out.println("DomesticCat.domesticCatCount = " + DomesticCat.domesticCatCount);
-        System.out.println("Moose.mooseCount = " + Moose.mooseCount);
-        System.out.println("Duck.count " + "= " + Duck.duckCount);
-        System.out.println("Tiger.count " + "= " + Tiger.tigerCount);
-        System.out.println("Dog.count " + "= " + Dog.dogCount);
+        System.out.println("Animal.count = " + Animal.getCount());
+        System.out.println("DomesticCat.domesticCatCount = " + DomesticCat.getDomesticCatCount());
+        System.out.println("Moose.mooseCount = " + Moose.getMooseCount());
+        System.out.println("Duck.count " + "= " + Duck.getDuckCount());
+        System.out.println("Tiger.count " + "= " + Tiger.getTigerCount());
+        System.out.println("Dog.count " + "= " + Dog.getDogCount());
 
 
     }

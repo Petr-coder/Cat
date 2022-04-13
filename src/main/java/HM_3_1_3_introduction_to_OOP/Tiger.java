@@ -2,20 +2,36 @@ package HM_3_1_3_introduction_to_OOP;
 
 public class Tiger extends Animal {
 
-    static int tigerCount;
     private String name;
+    private static int tigerCount;
 
-    Tiger(String name) {
-        super.maximumDistanceRun = 500;
-        super.maximumDistanceSwim = 300;
-        count++;
+    public Tiger(String name) {
+        setMaximumDistanceRun(500);
+        setMaximumDistanceSwim(300);
+        setCount(getCount() + 1);
         tigerCount++;
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static int getTigerCount() {
+        return tigerCount;
+    }
+
+    public static void setTigerCount(int tigerCount) {
+        Tiger.tigerCount = tigerCount;
+    }
+
     @Override
-    void run(double distance) {
-        if (distance < maximumDistanceRun) {
+    public void run(double distance) {
+        if (distance < getMaximumDistanceRun()) {
             System.out.println(name + " пробежал " + distance + " метров");
         } else {
             System.out.println(name + " столько не пробежит");
@@ -24,8 +40,8 @@ public class Tiger extends Animal {
     }
 
     @Override
-    void swim(double distance) {
-        if (distance < maximumDistanceSwim) {
+    public void swim(double distance) {
+        if (distance < getMaximumDistanceSwim()) {
             System.out.println(name + " проплыл " + distance + " метров");
         } else {
             System.out.println(name + " столько не проплывет");
