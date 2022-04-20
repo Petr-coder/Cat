@@ -7,12 +7,14 @@ public class Tshirt extends Clothes implements MaleClothes, FemaleClothes {
     }
 
     @Override
-    public void dressWoman(Clothes[] clothes) {
-
+    public void dressWoman() {
+        setName("Женская футболка");
+        System.out.println(this);
     }
 
     @Override
-    public void dressMan(Clothes[] clothes) {
-
+    public void dressMan() {
+        setName("Мужская футболка");
+        System.out.println(this);
     }
 }
