@@ -8,7 +8,7 @@ public enum Color {
     WHITE("Белый"),
     YELLOW("Жёлтый");
 
-    String name;
+    private String name;
 
     Color(String name) {
         this.name = name;

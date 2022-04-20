@@ -8,12 +8,14 @@ public class Pants extends Clothes implements MaleClothes, FemaleClothes {
     }
 
     @Override
-    public void dressWoman(Clothes[] clothes) {
-
+    public void dressWoman() {
+        setName("Женские брюки");
+        System.out.println(this);
     }
 
     @Override
-    public void dressMan(Clothes[] clothes) {
-
+    public void dressMan() {
+        setName("Мужские брюки");
+        System.out.println(this);
     }
 }

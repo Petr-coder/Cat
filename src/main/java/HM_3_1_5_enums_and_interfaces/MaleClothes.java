@@ -2,5 +2,5 @@ package HM_3_1_5_enums_and_interfaces;
 
 public interface MaleClothes {
 
-    public void dressMan(Clothes[] clothes);
+    public void dressMan();
 }

@@ -9,7 +9,7 @@ public class Tie extends Clothes implements MaleClothes {
     }
 
     @Override
-    public void dressMan(Clothes[] clothes) {
-
+    public void dressMan() {
+        System.out.println(this);
     }
 }
