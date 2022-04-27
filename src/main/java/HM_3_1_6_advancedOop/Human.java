@@ -31,13 +31,10 @@ public class Human implements Activity {
         boolean result = false;
 
         if (wall.getHeight() < 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Высота стены должна быть больше нуля");
 
         if (this.jumpLimit >= wall.getHeight()) {
-            System.out.println("Человек прыгнул на " + wall.getHeight());
             result = true;
-        } else if (this.jumpLimit < wall.getHeight()) {
-            System.out.println("Человек не смог перепрыгнуть");
         }
         return result;
     }
@@ -46,15 +43,18 @@ public class Human implements Activity {
     public boolean run(Treadmill treadmill) {
         boolean result = false;
         if (treadmill.getLength() < 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Длина трассы должна быть больше нуля");
 
         if (this.runLimit >= treadmill.getLength()) {
-            System.out.println("Человек пробежал " + treadmill.getLength());
             result = true;
-        } else if (this.runLimit < treadmill.getLength()) {
-            System.out.println("Человек не смог пробежать");
         }
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Human[" + "jumpLimit = " + jumpLimit +
+                ", runLimit = " + runLimit +
+                ']';
+    }
 }

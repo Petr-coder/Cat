@@ -1,6 +1,6 @@
 package HM_3_1_6_advancedOop;
 
-public class Wall implements Overcome {
+public class Wall implements OvercomeObstacle {
 
     private int height;
 
@@ -16,4 +16,8 @@ public class Wall implements Overcome {
         this.height = height;
     }
 
+    @Override
+    public boolean interact(Activity activity) {
+        return activity.jump(this);
+    }
 }

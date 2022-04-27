@@ -35,46 +35,42 @@ public class Task {
         activities[10] = new Cat(3, 200);
         activities[11] = new Cat(4, 50);
 
-        Overcome[] overcomes = new Overcome[10];
+        OvercomeObstacle[] overcomeObstacles = new OvercomeObstacle[10];
 
-        overcomes[0] = new Treadmill(4);
-        overcomes[1] = new Wall(2);
-        overcomes[2] = new Treadmill(100);
-        overcomes[3] = new Wall(4);
+        overcomeObstacles[0] = new Treadmill(4);
+        overcomeObstacles[1] = new Wall(2);
+        overcomeObstacles[2] = new Treadmill(100);
+        overcomeObstacles[3] = new Wall(4);
 
-        overcomes[4] = new Treadmill(5000);
-        overcomes[5] = new Wall(1);
-        overcomes[6] = new Wall(3);
-        overcomes[7] = new Wall(2);
-        overcomes[8] = new Treadmill(1000);
-        overcomes[9] = new Treadmill(30);
+        overcomeObstacles[4] = new Treadmill(5000);
+        overcomeObstacles[5] = new Wall(1);
+        overcomeObstacles[6] = new Wall(3);
+        overcomeObstacles[7] = new Wall(2);
+        overcomeObstacles[8] = new Treadmill(1000);
+        overcomeObstacles[9] = new Treadmill(30);
 
 
-        runBigRace(activities, overcomes);
+        runBigRace(activities, overcomeObstacles);
     }
 
-    static void runBigRace(Activity[] activities, Overcome[] overcomes) {
+    static void runBigRace(Activity[] activities, OvercomeObstacle[] overcomeObstacles) {
 
         for (int i = 0; i < activities.length; i++) {
 
-            for (int j = 0; j < overcomes.length; j++) {
-                if (!activities[i].goThrough(overcomes[j])) {
-                    System.out.println("Гонка закончена. Участник не смог осилить гонку");
-                    System.out.println("___________________");
+            for (int j = 0; j < overcomeObstacles.length; j++) {
+
+                if (!overcomeObstacles[j].interact(activities[i])) {
+                    System.out.println("Участник " + activities[i].toString() + " не смог осилить гонку");
                     break;
                 }
-                if (j == overcomes.length - 1) {
-                    System.out.println("Участник завершил гонку успешно");
+
+                if (j == overcomeObstacles.length - 1) {
+                    System.out.println("Участник " + activities[i].toString() + " завершил гонку успешно");
                 }
 
             }
 
-            if (i != activities.length - 1) {
-                System.out.println("___________________");
-                System.out.println("Следующий участник");
-            } else {
-                System.out.println("Соревнование закончено");
-            }
         }
     }
+
 }

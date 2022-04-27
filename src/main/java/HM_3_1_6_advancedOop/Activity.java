@@ -6,12 +6,4 @@ public interface Activity {
 
     boolean run(Treadmill treadmill);
 
-    default boolean goThrough(Overcome overcome) {
-        boolean result=false;
-        if (overcome instanceof Wall)
-            result = jump((Wall) overcome);
-        else if (overcome instanceof Treadmill)
-            result = run((Treadmill) overcome);
-        return result;
-    }
 }

@@ -1,6 +1,6 @@
 package HM_3_1_6_advancedOop;
 
-public class Treadmill implements Overcome {
+public class Treadmill implements OvercomeObstacle {
 
     private int length;
 
@@ -14,5 +14,10 @@ public class Treadmill implements Overcome {
 
     public void setLength(int length) {
         this.length = length;
+    }
+
+    @Override
+    public boolean interact(Activity activity) {
+        return activity.run(this);
     }
 }
