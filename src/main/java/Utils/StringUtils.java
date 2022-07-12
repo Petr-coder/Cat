@@ -1,7 +1,5 @@
 package Utils;
 
-import java.util.TreeSet;
-
 public class StringUtils {
 
     public static String fixPhoneNumber(String input) {
@@ -28,5 +26,11 @@ public class StringUtils {
         String emailRegex = "\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}";
         return input.matches(emailRegex);
     }
+
+    public static boolean validate(String login, String password) {
+        String credentialsRegex = "\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}";
+        return login.matches(credentialsRegex);
+    }
+
 
 }
