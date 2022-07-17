@@ -19,7 +19,7 @@ public class StringUtils {
 
     public static boolean isPhoneNumberFormatCorrect(String input) {
         String myRegex = "(8|\\+7|7)?([\\-]|[(]|([ ]?[(]))?(9)([0-9]{2})([\\-]|[ ]|([)][ ]?))?([0-9]{3})([\\-]|[ ])?([0-9]{2})([\\-]|[ ])?([0-9]{2})";
-        return input.replaceAll("[^\\d]", "").matches(myRegex);
+        return input.matches(myRegex);
     }
 
     public static boolean isEmailCorrect(String input) {
