@@ -1,17 +1,13 @@
 package HM_3_2_2;
 
-public class IncorrectPhoneException extends Throwable {
-    public IncorrectPhoneException(String s) {
-        System.out.println(s);
-    }
-
-    public IncorrectPhoneException() {
-
+public class IncorrectPhoneException extends Exception {
+    public IncorrectPhoneException(String message) {
+        super(message);
     }
 
     @Override
-    public String toString() {
-        return "Incorrect phone number format";
+    public String getMessage() {
+        return super.getMessage();
     }
 }
 

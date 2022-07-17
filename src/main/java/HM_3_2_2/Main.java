@@ -11,33 +11,31 @@ public class Main {
             commandExamples;
     private static String helpText = "Command examples:\n" + commandExamples;
 
-    public static void main(String[] args) throws IncorrectCommandException, IncorrectMailException, IncorrectPhoneException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         CustomerStorage executor = new CustomerStorage();
         for (; ; ) {
             String command = scanner.nextLine();
-            String[] tokens = command.split("\\s+", 2);
 
-            if (tokens[0].equals("add")) {
-                try {
+            try {
+                String[] tokens = command.split("\\s+", 2);
+
+                if (tokens[0].equals("add")) {
                     executor.addCustomer(tokens[1]);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("Incorrect number of items in the command");
-                }
-            } else if (tokens[0].equals("list")) {
-                executor.listCustomers();
-            } else if (tokens[0].equals("remove")) {
-                try {
+                } else if (tokens[0].equals("list")) {
+                    executor.listCustomers();
+                } else if (tokens[0].equals("remove")) {
                     executor.removeCustomer(tokens[1]);
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("Incorrect number of items in the command");
+                } else if (tokens[0].equals("count")) {
+                    System.out.println("There are " + executor.getCount() + " customers");
+                } else if (tokens[0].equals("help")) {
+                    System.out.println(helpText);
+                } else {
+                    System.out.println(commandError);
                 }
-            } else if (tokens[0].equals("count")) {
-                System.out.println("There are " + executor.getCount() + " customers");
-            } else if (tokens[0].equals("help")) {
-                System.out.println(helpText);
-            } else {
-                System.out.println(commandError);
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Incorrect number of items in the command2");
             }
 
         }

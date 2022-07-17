@@ -1,7 +1,9 @@
 package HM_3_2_2;
 
-public class IncorrectMailException extends Exception {
-    public IncorrectMailException(String message) {
+
+
+public class InvalidFormatException extends Exception{
+    public InvalidFormatException(String message) {
         super(message);
     }
 
@@ -10,4 +12,3 @@ public class IncorrectMailException extends Exception {
         return super.getMessage();
     }
 }
-
