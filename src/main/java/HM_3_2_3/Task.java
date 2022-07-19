@@ -1,4 +1,11 @@
 package HM_3_2_3;
+
+import HM_3_2_2.InvalidFormatException;
+
+import java.util.Scanner;
+
+import static Utils.StringUtils.validate;
+
 /*
 Цель задания
 Научиться использовать механизм исключений и реализовать свой первый unit тест
@@ -14,7 +21,8 @@ Login должен содержать только латинские буквы
 Длина login должна быть не более 20 символов, если login не соответствует этим требованиям,
 необходимо выбросить AuthException
 Password должен содержать только латинские буквы, цифры и знак подчеркивания.
-Длина password должна быть  не более 20 символов. Также password и confirmPassword должны быть равны.
+Длина password должна быть  не более 20 символов.
+Также password и confirmPassword должны быть равны.
 Если password не соответствует этим требованиям, необходимо выбросить AuthException.
 AuthException - пользовательский класс исключение с двумя конструкторами – один по умолчанию,
 второй принимает сообщение исключения и передает его в конструктор класса Exception.
@@ -47,5 +55,28 @@ AuthException - пользовательский класс исключение
  */
 public class Task {
 
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
+        for (; ; ) {
+            String command = scanner.nextLine();
+
+            try {
+                String[] tokens = command.split("\\s+", 3);
+
+                if (tokens.length != 3) {
+                    throw new InvalidFormatException("Login, password or confirmPassword is missed");
+                }
+
+                if (validate(tokens[0], tokens[1], tokens[2])) {
+                    System.out.println("Credentials are correct");
+                    break;
+                }
+            } catch (InvalidFormatException | NullPointerException e) {
+                System.out.println(e.getMessage());
+            }
+
+
+        }
+    }
 }
