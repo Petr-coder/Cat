@@ -30,28 +30,20 @@ public class StringUtils {
     }
 
     public static boolean validate(String login, String password, String confirmPassword) {
-
         String credentialsRegex = "^[\\w]{6,20}$";
         boolean result = false;
 
-        try {
-            if (login.matches(credentialsRegex) && password.matches(credentialsRegex) &&
-                    confirmPassword.equals(password)) {
-                result = true;
-            } else {
-                throw new AuthException("Field with login or password is not valid. Authentication is not possible.");
-            }
-        } catch (NullPointerException e) {
+        if (login != null && password != null) {
+            result = login.matches(credentialsRegex) && password.matches(credentialsRegex)
+                    && password.equals(confirmPassword);
+        } else {
             try {
-                throw new AuthException("Field with login or password must not be empty. Authentication is not possible.");
-            } catch (AuthException ex) {
-                System.out.println(ex.getMessage());
+                throw new AuthException("Field with login or password is not valid. Authentication is not possible.");
+            } catch (AuthException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (AuthException e) {
-            System.out.println(e.getMessage());
         }
 
         return result;
     }
-
 }

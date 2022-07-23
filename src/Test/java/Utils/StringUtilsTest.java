@@ -1,7 +1,5 @@
 package Utils;
 
-import HM_3_2_3.AuthException;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
@@ -55,7 +53,6 @@ class StringUtilsTest {
         assertFalse(validate("Login_12апр", "Password_1", "Password_"), "Field \"confirmPassword\" must be less 21 symbols test");
     }
 
-
     // Если все исключения обрабатываются в методе, то как их ловить.
     // Ради опыта сделал вызов исключения (генерил число от 0 до 1. если = 1, то бросал исключение) и поймал его тестом.
     // Но исходя из условий задачи вроде метод ничего не бросает.
@@ -66,6 +63,5 @@ class StringUtilsTest {
 //
 //        });
 //    }
-
 
 }

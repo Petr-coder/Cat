@@ -67,15 +67,13 @@ public class Task {
                 if (tokens.length != 3) {
                     throw new InvalidFormatException("Login, password or confirmPassword is missed");
                 }
-
                 if (validate(tokens[0], tokens[1], tokens[2])) {
                     System.out.println("Credentials are correct");
                     break;
                 }
-            } catch (InvalidFormatException | NullPointerException e) {
+            } catch (InvalidFormatException e) {
                 System.out.println(e.getMessage());
             }
-
 
         }
     }
