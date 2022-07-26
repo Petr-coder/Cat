@@ -55,26 +55,15 @@ AuthException - пользовательский класс исключение
  */
 public class Task {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws AuthException {
         Scanner scanner = new Scanner(System.in);
 
         for (; ; ) {
             String command = scanner.nextLine();
 
-            try {
-                String[] tokens = command.split("\\s+", 3);
-
-                if (tokens.length != 3) {
-                    throw new InvalidFormatException("Login, password or confirmPassword is missed");
-                }
-                if (validate(tokens[0], tokens[1], tokens[2])) {
-                    System.out.println("Credentials are correct");
-                    break;
-                }
-            } catch (InvalidFormatException e) {
-                System.out.println(e.getMessage());
-            }
-
+            String[] tokens = command.split("\\s+", 3);
+            validate(tokens);
+            System.out.println("Credentials are correct");
         }
     }
 }
