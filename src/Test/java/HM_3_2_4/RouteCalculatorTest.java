@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 class RouteCalculatorTest {
@@ -56,7 +57,6 @@ class RouteCalculatorTest {
         testList.add(stationIndex.getStation("Спасская"));
         testList.add(stationIndex.getStation("Достоевская"));
         assertEquals(testList, calculator.getShortestRoute(stationIndex.getStation("Адмиралтейская"), stationIndex.getStation("Достоевская")));
-
     }
 
     @Test
@@ -70,7 +70,6 @@ class RouteCalculatorTest {
         testList.add(stationIndex.getStation("Чернышевская"));
         testList.add(stationIndex.getStation("Площадь Ленина"));
         assertEquals(testList, calculator.getShortestRoute(stationIndex.getStation("Горьковская"), stationIndex.getStation("Площадь Ленина")));
-
     }
 
 
@@ -84,11 +83,49 @@ class RouteCalculatorTest {
         testList.add(stationIndex.getStation("Площадь Восстания"));
         testList.add(stationIndex.getStation("Чернышевская"));
         testList.add(stationIndex.getStation("Площадь Ленина"));
-        assertEquals(testList, calculator.getShortestRoute(stationIndex.getStation("Горьковская"), stationIndex.getStation("Площадь Горьковская")));
+        assertThrows(NullPointerException.class, () -> {
+            calculator.getShortestRoute(stationIndex.getStation("Горьковская"), stationIndex.getStation("Площадь Горьковская"));
+        });
+    }
+    @Test
+    void calculateDurationOneLine() {
+        List<Station> testList = new ArrayList<>();
+        testList.add(stationIndex.getStation("Комендантский проспект"));
+        testList.add(stationIndex.getStation("Старая Деревня"));
+        testList.add(stationIndex.getStation("Крестовский остров"));
+        testList.add(stationIndex.getStation("Чкаловская"));
+        testList.add(stationIndex.getStation("Спортивная"));
+        testList.add(stationIndex.getStation("Адмиралтейская"));
+        testList.add(stationIndex.getStation("Садовая"));
+        testList.add(stationIndex.getStation("Звенигородская"));
+        testList.add(stationIndex.getStation("Обводный канал"));
+        testList.add(stationIndex.getStation("Волковская"));
+        testList.add(stationIndex.getStation("Бухарестская"));
+        testList.add(stationIndex.getStation("Международная"));
+        assertEquals(27.5, calculator.calculateDuration(testList));
     }
 
     @Test
-    void calculateDuration() {
+    void calculateDurationOneConnection() {
+        List<Station> testList = new ArrayList<>();
+        testList.add(stationIndex.getStation("Адмиралтейская"));
+        testList.add(stationIndex.getStation("Садовая"));
+        testList.add(stationIndex.getStation("Спасская"));
+        testList.add(stationIndex.getStation("Достоевская"));
+        assertEquals(8.5, calculator.calculateDuration(testList));
+    }
+
+    @Test
+    void calculateDurationTwoConnection() {
+        List<Station> testList = new ArrayList<>();
+        testList.add(stationIndex.getStation("Горьковская"));
+        testList.add(stationIndex.getStation("Невский проспект"));
+        testList.add(stationIndex.getStation("Гостиный двор"));
+        testList.add(stationIndex.getStation("Маяковская"));
+        testList.add(stationIndex.getStation("Площадь Восстания"));
+        testList.add(stationIndex.getStation("Чернышевская"));
+        testList.add(stationIndex.getStation("Площадь Ленина"));
+        assertEquals(17.0, calculator.calculateDuration(testList));
     }
 
 
