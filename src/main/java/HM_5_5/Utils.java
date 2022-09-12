@@ -29,7 +29,7 @@ public class Utils {
         return ARRAY_OF_VALID_LETTERS[index];
     }
 
-    static int generateDigit() {
+    public static int generateDigit() {
         return (int) ((Math.random() * ((MAX_NUMBER - MIN_NUMBER) + 1)) + MIN_NUMBER);
     }
 
