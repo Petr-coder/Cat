@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 Создайте массив объектов типа Сотрудник (с полями Имя, Возраст, Зарплата) и вычислите

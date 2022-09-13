@@ -14,17 +14,12 @@ public class Task1 {
 
     public static void main(String[] args) {
         List<String> words = new ArrayList<>(Arrays.asList(
-                "Жаба", "Жаба", "Корова", "Бык", "Змея","Змея","Змея","Змея","Змея", "Кот", "Кот", "Кот"
+                "Жаба", "Жаба", "Корова", "Бык", "Змея", "Змея", "Змея", "Змея", "Змея", "Кот", "Кот", "Кот"
         ));
 
-        Map< String, Long > wordsByCount = words.stream()
-                .collect(Collectors.groupingBy(String::valueOf, Collectors.counting()));
-
-        String frequentWord = wordsByCount.entrySet().stream()
-                .max(Map.Entry.comparingByValue()).get().getKey();
-
-        System.out.println(frequentWord);
-
+        System.out.println(words.stream()
+                .collect(Collectors.groupingBy(String::valueOf, Collectors.counting())).entrySet().stream()
+                .max(Map.Entry.comparingByValue()).get().getKey());
 
 
     }

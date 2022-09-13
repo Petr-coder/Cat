@@ -25,8 +25,7 @@ public class Task3 {
 
     static void printLargestSalaryList(Employee[] list, int number) {
         System.out.println(number + " самых старших сотрудников зовут:");
-        List<Employee> employeeList = new ArrayList<>(Arrays.asList(list));
-        employeeList.stream().sorted(Comparator.comparing(Employee::getAge).reversed()).limit(number).forEach(e ->
+        Arrays.stream(list).sorted(Comparator.comparing(Employee::getAge).reversed()).limit(number).forEach(e ->
                 System.out.print(e.getName() + ", "));
     }
 }
