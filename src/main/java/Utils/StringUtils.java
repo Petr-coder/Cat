@@ -1,6 +1,6 @@
 package Utils;
 
-import HM_3_2_3.AuthException;
+import part3.HM_3_2_3.AuthException;
 
 public class StringUtils {
 
