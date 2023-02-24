@@ -23,9 +23,9 @@ public class PersonGenerator {
             "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Jackson", "Martin", "Lee", "Harris"};
     private static final Random RANDOM = new Random();
 
-    private static final int legalAge = 18;
-    private static final int retirementAgeForWomen = 60;
-    private static final int retirementAgeForMen = 65;
+    private static final int LEGAL_AGE = 18;
+    private static final int RETIREMENT_AGE_FOR_WOMEN = 60;
+    private static final int RETIREMENT_AGE_FOR_MEN = 65;
 
     public static void main(String[] args) {
         List<Person> people = new ArrayList<>();
@@ -48,13 +48,18 @@ public class PersonGenerator {
                 .filter(person -> person.getGender() == Sex.FEMALE)
                 .count();
         long underageWomen = people.stream()
-                .filter(person -> person.getGender() == Sex.FEMALE && person.getAge() < legalAge)
+                .filter(person -> person.getGender() == Sex.FEMALE && person.getAge() < LEGAL_AGE)
                 .count();
         long retiredMen = people.stream()
-                .filter(person -> person.getGender() == Sex.MALE && person.getAge() >= retirementAgeForMen)
+                .filter(person -> person.getGender() == Sex.MALE && person.getAge() >= RETIREMENT_AGE_FOR_MEN)
                 .count();
         long retiredWomen = people.stream()
-                .filter(person -> person.getGender() == Sex.FEMALE && person.getAge() >= retirementAgeForWomen)
+                .filter(person -> person.getGender() == Sex.FEMALE && person.getAge() >= RETIREMENT_AGE_FOR_WOMEN)
+                .count();
+
+        long totalMaleAndFemaleRetirees = people.stream()
+                .filter(p -> (p.getGender() == Sex.MALE && p.getAge() >= RETIREMENT_AGE_FOR_MEN)
+                        || (p.getGender() == Sex.FEMALE && p.getAge() >= RETIREMENT_AGE_FOR_WOMEN))
                 .count();
 
         System.out.println("Total number of people: " + totalPeople);
@@ -63,6 +68,7 @@ public class PersonGenerator {
         System.out.println("Number of underage women: " + underageWomen);
         System.out.println("Number of men of retirement age: " + retiredMen);
         System.out.println("Number of women of retirement age: " + retiredWomen);
+        System.out.println("Number of men and women of retirement age: " + totalMaleAndFemaleRetirees);
     }
 }
 
