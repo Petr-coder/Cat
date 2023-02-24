@@ -1,0 +1,10 @@
+.idea
+.allure
+build
+target
+out
+*.iml
+*.log
+/local.properties
+mqjms.log.*
+/reports
