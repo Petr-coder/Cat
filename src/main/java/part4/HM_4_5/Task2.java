@@ -5,6 +5,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 Создать новый класс, на основании City (без наследования), в котором language это не строковое поле,
@@ -19,19 +20,13 @@ public class Task2 {
 
     public static void main(String[] args) throws IOException {
 
-        Map<String, List<Language>> languageMap = new HashMap<>();
-
         List<Language> languageList = new CsvToBeanBuilder(new FileReader(countryLanguageFilePath))
                 .withType(Language.class)
                 .build()
                 .parse();
 
-        for (Language language : languageList) {
-            if (!languageMap.containsKey(language.getCountryCode())) {
-                languageMap.put(language.getCountryCode(), new ArrayList<>());
-            }
-            languageMap.get(language.getCountryCode()).add(language);
-        }
+        Map<String, List<Language>> languageMap = languageList.stream()
+                .collect(Collectors.groupingBy(Language::getCountryCode));
 
         for (Map.Entry<String, List<Language>> entry : languageMap.entrySet()) {
             System.out.println(entry.getKey() + ":" + entry.getValue().toString());
@@ -42,15 +37,12 @@ public class Task2 {
                 .build()
                 .parse();
 
-        for (CityUpgraded city : cityList) {
-            for (Map.Entry<String, List<Language>> entry : languageMap.entrySet()) {
-                if (entry.getKey().equals(city.getCountryCode())) {
-                    city.setListOfLanguage(entry.getValue());
-                }
-            }
-        }
+        cityList.forEach(city -> languageMap.entrySet().stream()
+                .filter(entry -> entry.getKey().equals(city.getCountryCode()))
+                .findFirst()
+                .ifPresent(entry -> city.setListOfLanguage(entry.getValue())));
 
-//        System.out.println(cityList);
+        System.out.println(cityList);
     }
 }
 
