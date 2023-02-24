@@ -10,6 +10,30 @@ public class Language {
     @CsvBindByName(column = "IsOfficial", required = true)
     private boolean IsOfficial;
 
+    public String getCountryCode() {
+        return CountryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        CountryCode = countryCode;
+    }
+
+    public String getLanguage() {
+        return Language;
+    }
+
+    public void setLanguage(String language) {
+        Language = language;
+    }
+
+    public boolean isOfficial() {
+        return IsOfficial;
+    }
+
+    public void setIsOfficial(boolean official) {
+        IsOfficial = official;
+    }
+
     @Override
     public String toString() {
         return "Language{" +

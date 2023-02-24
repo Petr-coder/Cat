@@ -2,6 +2,9 @@ package part4.HM_4_5;
 
 import com.opencsv.bean.CsvBindByName;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CityUpgraded {
     @CsvBindByName(column = "ID", required = true)
     private int id;
@@ -13,7 +16,9 @@ public class CityUpgraded {
     private String District;
     @CsvBindByName(column = "Population", required = true)
     private int Population;
-    private Language[] listOfLanguage;
+    private List<Language> listOfLanguage;
+
+
 
     public int getId() {
         return id;
@@ -55,14 +60,24 @@ public class CityUpgraded {
         Population = population;
     }
 
+
+    public void setListOfLanguage(List<Language> listOfLanguage) {
+        this.listOfLanguage = listOfLanguage;
+    }
+
+    public List<Language> getListOfLanguage() {
+        return listOfLanguage;
+    }
+
     @Override
     public String toString() {
-        return "City{" +
+        return "CityUpgraded{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", CountryCode='" + CountryCode + '\'' +
                 ", District='" + District + '\'' +
                 ", Population=" + Population +
-                '}';
+                ", listOfLanguage=" + listOfLanguage +
+                '}' + '\n';
     }
 }

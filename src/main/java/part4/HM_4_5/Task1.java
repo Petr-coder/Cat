@@ -31,23 +31,6 @@ public class Task1 {
                 .withType(City.class)
                 .build()
                 .parse();
-
-        for (Language language : languageList) {
-            System.out.println("Country Code: " + language);
-
-        }
-
-        System.out.println("_______________");
-        System.out.println("_______________");
-        System.out.println("_______________");
-        System.out.println("_______________");
-        System.out.println("_______________");
-        System.out.println("_______________");
-
-        for (City city : cityList) {
-            System.out.println("Country Code: " + city);
-
-        }
     }
 
 
