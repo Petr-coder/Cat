@@ -25,21 +25,14 @@ public class Task3 {
                 .build()
                 .parse();
 
-        int count = 0;
-        for (CityUpgraded city : getCityList()) {
-            boolean russianOfficial = false;
-            for (Language language : languageList) {
-                if (city.getCountryCode().equals(language.getCountryCode()) &&
-                        language.getLanguage().equalsIgnoreCase("Russian") &&
-                        language.isOfficial()) {
-                    russianOfficial = true;
-                    break;
-                }
-            }
-            if (!russianOfficial) {
-                count++;
-            }
-        }
+        long count = getCityList().stream()
+                .filter(city -> languageList.stream()
+                        .noneMatch(language ->
+                                city.getCountryCode().equals(language.getCountryCode()) &&
+                                        language.getLanguage().equalsIgnoreCase("Russian") &&
+                                        language.isOfficial()))
+                .count();
+
         System.out.println("Number of cities where Russian is not an official language: " + count);
 
         List<String> cityName = getCityList().stream()
