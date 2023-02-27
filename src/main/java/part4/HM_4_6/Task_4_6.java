@@ -91,24 +91,16 @@ public class Task_4_6 {
     // - или TOO_MUCH — если их две и больше.
     // Порядок групп не важен.
     public static Map<String, List<String>> getEmailAddresses(Library library) {
-        Map<Boolean, List<Reader>> readersByBookCount = library.getReaders().stream()
-                .collect(Collectors.partitioningBy(reader -> reader.getBooks().size() <= 2));
-
-        List<String> okEmails = readersByBookCount.get(true).stream()
-                .map(Reader::getEmail)
-                .map(EmailAddress::getEmail)
-                .collect(Collectors.toList());
-
-        List<String> tooMuchEmails = readersByBookCount.get(false).stream()
-                .map(Reader::getEmail)
-                .map(EmailAddress::getEmail)
-                .collect(Collectors.toList());
-
-        Map<String, List<String>> result = new HashMap<>();
-        result.put("OK", okEmails);
-        result.put("TOO_MUCH", tooMuchEmails);
-
-        return result;
+        return library.getReaders().stream()
+                .collect(Collectors.partitioningBy(
+                        reader -> reader.getBooks().size() <= 2,
+                        Collectors.mapping(
+                                reader -> reader.getEmail().getEmail(),
+                                Collectors.toList())))
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        e -> e.getKey() ? "OK" : "TOO_MUCH",
+                        Map.Entry::getValue));
     }
-
 }
