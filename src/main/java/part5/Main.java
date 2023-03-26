@@ -3,10 +3,7 @@ package part5;
 import part5.DB_connection.DatabaseConnectionManager;
 import part5.DB_connection.MySQLConnectionFactory;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +12,7 @@ public class Main {
         try {
             // Get a connection factory
             DatabaseConnectionManager connectionManager = new DatabaseConnectionManager(
-                    new MySQLConnectionFactory("jdbc:mysql://localhost:3306/world","root","1234"));
+                    new MySQLConnectionFactory("jdbc:mysql://localhost:3306/world", "root", "1234"));
 
             // Get a connection to the world database
             Connection connection = connectionManager.getConnection();
@@ -33,6 +30,43 @@ public class Main {
             String query3 = "SELECT CountryCode, COUNT(*) FROM City " +
                     "WHERE Name LIKE '%en' " +
                     "GROUP BY CountryCode";
+
+            String sqlQuery4 = "SELECT c.Name, cl.Language FROM city c JOIN countrylanguage cl ON c.CountryCode = cl.CountryCode WHERE c.Population < 10000 AND cl.IsOfficial = true";
+
+            try (PreparedStatement stmt = connection.prepareStatement(sqlQuery4)) {
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()) {
+                    System.out.println(rs.getString("Name") + ", " + rs.getString("Language"));
+                }
+            }
+
+            String sqlQuery5 = "SELECT c.Name FROM city c " +
+                    "JOIN country co ON c.CountryCode = co.Code " +
+                    "JOIN countrylanguage cl ON co.Code = cl.CountryCode " +
+                    "GROUP BY c.Name " +
+                    "HAVING COUNT(DISTINCT cl.Language) >= 4";
+
+            String sqlQuery6 = "SELECT COUNT(distinct Name) FROM city WHERE CountryCode IN (SELECT CountryCode " +
+                    "FROM countrylanguage WHERE IsOfficial = 'T' and Percentage<1)";
+
+            String sqlQuery7 = "SELECT COUNT(*) FROM city " +
+                    "WHERE Language NOT IN (SELECT Language FROM countrylanguage WHERE IsOfficial = 'T') " +
+                    "AND Population > 0.01*(SELECT SUM(Population) FROM city)";
+
+            String sqlQuery8 = "SELECT c.Name AS country_name, ci.Name AS district_name\n" +
+                    "FROM country c\n" +
+                    "JOIN city ci ON c.Code = ci.CountryCode\n" +
+                    "WHERE c.Continent = 'Africa'\n" +
+                    "AND c.Region = 'Western Africa'\n" +
+                    "AND c.LifeExpectancy > 60\n" +
+                    "AND (SELECT SUM(Percentage) FROM countrylanguage WHERE CountryCode = c.Code AND IsOfficial = 'F') > 10";
+
+            String query9 = "SELECT c.Name AS country_name, c.GovernmentForm, cl.Language\n" +
+                    "FROM country c\n" +
+                    "JOIN countrylanguage cl ON c.Code = cl.CountryCode\n" +
+                    "WHERE c.GovernmentForm LIKE '%epubli%'\n" +
+                    "AND cl.Language = 'Spanish'\n" +
+                    "AND c.Region LIKE '%America';";
 
             Map<String, String> results1 = executeQuery(connection, query1, "City.Name", "Country.Name");
             int results2 = executeCountQuery(connection, query2);
